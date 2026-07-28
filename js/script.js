@@ -1,0 +1,1 @@
+document.getElementById("student-info").textContent = "Student: Rocco Minetola — ID: 200647328";

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Pizza Maker</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="site-header">
+    <h1>🍕 The Pizza Maker</h1>
+    <p class="tagline">Build your Pizza the way you want it</p>
+  </header>
+
+  <main class="page-wrap">
+
+    <!-- Order Form -->
+    <form id="pizza-form" novalidate>
+
+      <fieldset>
+        <legend>1. Your Info</legend>
+
+        <label for="customer-name">Name</label>
+        <input
+          type="text"
+          id="customer-name"
+          name="customer-name"
+          placeholder="e.g. Papa John"
+          required
+          minlength="2">
+        <span class="error-msg" id="err-name"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Choose a Size</legend>
+        <div class="option-grid">
+          <label class="radio-card">
+            <input type="radio" name="size" value="Small (10&quot;)" required>
+            <span>Small<br><small>10"</small></span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="size" value="Medium (12&quot;)">
+            <span>Medium<br><small>12"</small></span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="size" value="Large (14&quot;)">
+            <span>Large<br><small>14"</small></span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="size" value="X-Large (16&quot;)">
+            <span>X-Large<br><small>16"</small></span>
+          </label>
+        </div>
+        <span class="error-msg" id="err-size"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Pick a Crust</legend>
+        <select id="crust" name="crust" required>
+          <option value="" disabled selected>-- Select a crust --</option>
+          <option value="Thin Crust">Thin Crust</option>
+          <option value="Regular Crust">Regular Crust</option>
+          <option value="Deep Dish">Deep Dish</option>
+          <option value="Stuffed Crust">Stuffed Crust</option>
+          <option value="Gluten-Free">Gluten Free</option>
+        </select>
+        <span class="error-msg" id="err-crust"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Add Toppings <small>(up to 6)</small></legend>
+        <div class="option-grid checkboxes">
+          <label class="check-card"><input type="checkbox" name="toppings" value="Pepperoni"> Pepperoni</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Onions"> Onions</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Sausage"> Sausage</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Bacon"> Bacon</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Black Olives"> Black Olives</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Green Peppers"> Green Peppers</label>
+          <label class="check-card"><input type="checkbox" name="toppings" value="Extra Cheese"> Extra Cheese</label>
+        </div>
+        <span class="error-msg" id="err-toppings"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. Quantity &amp; Fulfillment</legend>
+
+        <div class="row">
+          <div class="field">
+            <label for="quantity">Number of pizzas</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="10"
+              step="1"
+              value="1"
+              required>
+            <span class="error-msg" id="err-quantity"></span>
+          </div>
+
+          <div class="field">
+            <label for="fulfillment">Delivery or Pickup?</label>
+            <select id="fulfillment" name="fulfillment" required>
+              <option value="" disabled selected>-- Select one --</option>
+              <option value="Delivery">Delivery</option>
+              <option value="Pickup">Pickup</option>
+            </select>
+            <span class="error-msg" id="err-fulfillment"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>6. Special Instructions <small>(optional)</small></legend>
+        <textarea
+          id="instructions"
+          name="instructions"
+          rows="3"
+          maxlength="200"
+          placeholder="e.g. leave at the door..."></textarea>
+      </fieldset>
+
+      <button type="submit" id="order-btn">Order Pizza 🍕</button>
+    </form>
+
+    <section id="order-output" class="hidden" aria-live="polite">
+      <h2>Your Order Confirmation</h2>
+      <p id="order-summary"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p id="student-info"></p>
+  </footer>
+
+</body>
+</html>
