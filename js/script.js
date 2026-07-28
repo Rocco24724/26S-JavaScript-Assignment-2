@@ -1,5 +1,52 @@
 document.getElementById("student-info").textContent = "Student: Rocco Minetola — ID: 200647328";
 
+/* Pizza Class */
+class Pizza {
+  constructor(customerName, size, crust, toppings, quantity, fulfillment, instructions) {
+    this.customerName = customerName;
+    this.size = size;
+    this.crust = crust;
+    this.toppings = toppings;
+    this.quantity = quantity;
+    this.fulfillment = fulfillment;
+    this.instructions = instructions;
+  }
+
+  // Price based on size
+  calculatePrice() {
+    const basePrices = {
+      'Small (10")': 8,
+      'Medium (12")': 10,
+      'Large (14")': 12,
+      'X-Large (16")': 14
+    };
+    const base = basePrices[this.size] || 10;
+    const toppingCost = this.toppings.length * 1.25;
+    return ((base + toppingCost) * this.quantity).toFixed(2);
+  }
+
+  // Builds and returns the full order description
+  getOrderSummary() {
+    const toppingsText = this.toppings.length > 0
+      ? this.toppings.join(", ")
+      : "No extra toppings";
+
+    const notesText = this.instructions && this.instructions.trim() !== ""
+      ? this.instructions.trim()
+      : "None";
+
+    return (
+      `Thanks, ${this.customerName}! Here is your order:\n` +
+      `Quantity: ${this.quantity} x ${this.size} pizza\n` +
+      `Crust: ${this.crust}\n` +
+      `Toppings: ${toppingsText}\n` +
+      `Fulfillment: ${this.fulfillment}\n` +
+      `Special instructions: ${notesText}\n` +
+      `Estimated total: $${this.calculatePrice()}`
+    );
+  }
+}
+
 /* Form Validation */
 const form = document.getElementById("pizza-form");
 
