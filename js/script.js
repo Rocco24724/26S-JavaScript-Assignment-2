@@ -76,5 +76,15 @@ form.addEventListener("submit", function (event) {
     return; 
   }
 
-  console.log("Form is valid! Ready to capture values next.");
+  /* Captures Values of all inputed values */
+  const customerName = nameInput.value.trim();
+  const size = form.querySelector('input[name="size"]:checked').value;
+  const crust = crustSelect.value;
+  const toppings = Array.from(form.querySelectorAll('input[name="toppings"]:checked'))
+    .map(input => input.value);
+  const quantity = Number(quantityInput.value);
+  const fulfillment = fulfillmentSelect.value;
+  const instructions = document.getElementById("instructions").value;
+
+  console.log({ customerName, size, crust, toppings, quantity, fulfillment, instructions });
 });
