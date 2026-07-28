@@ -1,0 +1,242 @@
+/* Base colours and radius I can use with just the name and not have to type in the hex code everytime */
+:root {
+  --crust-cream: #fbf3e2;
+  --dough-white: #fffaf0;
+  --tomato-red: #c8402c;
+  --tomato-red-dark: #a3301f;
+  --basil-green: #4c7a4a;
+  --char-brown: #3a2a20;
+  --text-dark: #2e2117;
+  --error-red: #b3261e;
+  --border-soft: #e4d3ad;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Verdana, Arial, sans-serif;
+  background-color: var(--crust-cream);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, var(--tomato-red), var(--tomato-red-dark));
+  color: var(--dough-white);
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  border-bottom: 6px solid var(--char-brown);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+}
+
+.site-header .tagline {
+  margin: 0.4rem 0 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Layout */
+.page-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+form {
+  background: var(--dough-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(58, 42, 32, 0.08);
+}
+
+fieldset {
+  border: none;
+  border-top: 2px dashed var(--border-soft);
+  padding: 1rem 0;
+  margin: 0;
+}
+
+fieldset:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+legend {
+  font-weight: 700;
+  color: var(--tomato-red-dark);
+  padding: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+legend small {
+  font-weight: 400;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: var(--crust-cream);
+  color: var(--text-dark);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--basil-green);
+  outline-offset: 1px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Size/Toppings */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+.radio-card,
+.check-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  background: var(--crust-cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.radio-card:has(input:checked),
+.check-card:has(input:checked) {
+  border-color: var(--basil-green);
+  background-color: #eaf3e9;
+}
+
+.radio-card input,
+.check-card input {
+  accent-color: var(--tomato-red);
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+}
+
+.radio-card small {
+  opacity: 0.7;
+}
+
+/* Quantity/Fulfillment */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Errors */
+.error-msg {
+  display: block;
+  color: var(--error-red);
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 1.1em;
+  margin-top: 0.25rem;
+}
+
+input.invalid,
+select.invalid {
+  border-color: var(--error-red);
+}
+
+/* Button */
+button#order-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 0.85rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dough-white);
+  background-color: var(--tomato-red);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+button#order-btn:hover {
+  background-color: var(--tomato-red-dark);
+}
+
+button#order-btn:active {
+  transform: scale(0.99);
+}
+
+/* Order Output */
+#order-output {
+  margin-top: 1.5rem;
+  background: #eaf3e9;
+  border: 1px solid var(--basil-green);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+}
+
+#order-output h2 {
+  margin-top: 0;
+  color: var(--basil-green);
+}
+
+#order-output p {
+  white-space: pre-line;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: var(--char-brown);
+  opacity: 0.75;
+}
