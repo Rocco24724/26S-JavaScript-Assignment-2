@@ -133,5 +133,12 @@ form.addEventListener("submit", function (event) {
   const fulfillment = fulfillmentSelect.value;
   const instructions = document.getElementById("instructions").value;
 
-  console.log({ customerName, size, crust, toppings, quantity, fulfillment, instructions });
+  /* Create a Pizza object and display it */
+  const order = new Pizza(customerName, size, crust, toppings, quantity, fulfillment, instructions);
+
+  const outputSection = document.getElementById("order-output");
+  const outputParagraph = document.getElementById("order-summary");
+
+  outputParagraph.textContent = order.getOrderSummary();
+  outputSection.classList.remove("hidden");
 });
